@@ -210,6 +210,7 @@ ECHO_C =
 ECHO_N = -n
 ECHO_T = 
 ETAGS = etags
+GIT = git
 INSTALL = /usr/bin/install -c
 INSTALL_DATA = ${INSTALL} -m 644
 INSTALL_PROGRAM = ${INSTALL}
@@ -273,7 +274,7 @@ top_build_prefix =
 top_builddir = .
 top_srcdir = .
 ACLOCAL_AMFLAGS = -I m4
-SUBDIRS = . tests
+SUBDIRS = src . tests
 all: all-recursive
 
 .SUFFIXES:
@@ -736,6 +737,8 @@ uninstall-am:
 
 .PRECIOUS: Makefile
 
+
+.PHONY: format check-format super-clean
 
 format:
 	shfmt --write --simplify --list **/*.sh

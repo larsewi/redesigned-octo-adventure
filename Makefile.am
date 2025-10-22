@@ -1,5 +1,7 @@
 ACLOCAL_AMFLAGS = -I m4
-SUBDIRS = . tests
+SUBDIRS = src . tests
+
+.PHONY: format check-format super-clean
 
 format:
 	shfmt --write --simplify --list **/*.sh

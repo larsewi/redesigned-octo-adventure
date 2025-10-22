@@ -7,17 +7,15 @@ AM_INIT_AUTOMAKE([-Wall -Werror foreign subdir-objects])
 
 # Checks for programs.
 
-# Checks for libraries.
-
-# Checks for header files.
-
-# Checks for typedefs, structures, and compiler characteristics.
-
-# Checks for library functions.
+AC_CHECK_PROGS([GIT], [git])
+if test -z "$GIT"; then
+    AC_MSG_WARN([git not found - some features may be unavailable])
+fi
 
 AC_CONFIG_TESTDIR([tests])
-
 AC_CONFIG_FILES([Makefile
+                 src/Makefile
+                 src/utils/Makefile
                  tests/Makefile])
 
 AC_OUTPUT
