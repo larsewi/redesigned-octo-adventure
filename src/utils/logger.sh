@@ -22,5 +22,5 @@ log_info() {
 # Args:
 #   $@ - Error message
 log_error() {
-	echo "$(basename "$0"): error:" "$@" >&2
+	echo "$(basename "$0"): error:" "$@" 1>&2
 }

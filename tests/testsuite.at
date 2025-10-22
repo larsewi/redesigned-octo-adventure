@@ -14,8 +14,14 @@ fi]])
 
 ########################################
 
-AT_SETUP([Test suite sanity check])
-AT_CHECK([echo -n "Hello World!"], 0, [Hello World!])
+AT_SETUP([Test logging functions])
+. $abs_top_builddir/src/utils/logger.sh
+AT_CHECK([log_debug "Hello World!"], 0, [testsuite: debug: Hello World!
+])
+AT_CHECK([log_info "Hello World!"], 0, [testsuite: info: Hello World!
+])
+AT_CHECK([log_error "Hello World!"], 0, [], [testsuite: error: Hello World!
+])
 AT_CLEANUP
 
 ########################################
