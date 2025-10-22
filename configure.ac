@@ -8,8 +8,17 @@ AM_INIT_AUTOMAKE([-Wall -Werror foreign subdir-objects])
 # Checks for programs.
 
 AC_CHECK_PROGS([GIT], [git])
-if test -z "$GIT"; then
+if test -n "$GIT"; then
+    AM_CONDITIONAL([HAVE_GIT], [test -n "$GIT"])
+else
     AC_MSG_WARN([git not found - some features may be unavailable])
+fi
+
+AC_CHECK_PROGS([SHFMT], [shfmt])
+if test -n "$SHFMT"; then
+    AM_CONDITIONAL([HAVE_SHFMT], [test -n "$SHFMT"])
+else
+    AC_MSG_WARN([shfmt not found - some features may be unavailable])
 fi
 
 AC_CONFIG_TESTDIR([tests])

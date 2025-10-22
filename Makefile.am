@@ -3,11 +3,15 @@ SUBDIRS = src . tests
 
 .PHONY: format check-format super-clean
 
+if HAVE_SHFMT
 format:
-	shfmt --write --simplify --list **/*.sh
+	@SHFMT@ --write --simplify --list $$(find . -name '*.sh' -type f)
 
 check-format:
-	shfmt --diff --simplify --list **/*.sh
+	@SHFMT@ --diff --simplify --list $$(find . -name '*.sh' -type f)
+endif
 
+if HAVE_SHFMT
 super-clean:
-	if command -v git; then git clean -fxd; fi
+	@GIT@ clean -fxd
+endif

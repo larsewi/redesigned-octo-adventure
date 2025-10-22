@@ -231,6 +231,7 @@ PACKAGE_VERSION = 0.0.1
 PATH_SEPARATOR = :
 SET_MAKE = 
 SHELL = /bin/bash
+SHFMT = shfmt
 STRIP = 
 VERSION = 0.0.1
 abs_builddir = /home/larsewi/ntech/redesigned-octo-adventure
@@ -741,13 +742,13 @@ uninstall-am:
 .PHONY: format check-format super-clean
 
 format:
-	shfmt --write --simplify --list **/*.sh
+	shfmt --write --simplify --list $$(find . -name '*.sh' -type f)
 
 check-format:
-	shfmt --diff --simplify --list **/*.sh
+	shfmt --diff --simplify --list $$(find . -name '*.sh' -type f)
 
 super-clean:
-	if command -v git; then git clean -fxd; fi
+	git clean -fxd
 
 # Tell versions [3.59,3.63) of GNU make to not export all variables.
 # Otherwise a system limit (for SysV at least) may be exceeded.
