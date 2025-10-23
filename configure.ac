@@ -27,6 +27,7 @@ AC_ARG_ENABLE([enterprise],
               [PROJECT=community])
 AC_MSG_NOTICE([Project is $PROJECT])
 AC_SUBST([PROJECT])
+AM_CONDITIONAL([HAVE_ENTERPRISE], [test "$PROJECT" = enterprise])
 
 AC_ARG_ENABLE([hub],
               AS_HELP_STRING([--enable-hub], [whether to build hub features]),
@@ -38,6 +39,7 @@ AC_ARG_ENABLE([hub],
               [ROLE=agent])
 AC_MSG_NOTICE([Role is $ROLE])
 AC_SUBST([ROLE])
+AM_CONDITIONAL([HAVE_HUB], [test "$ROLE" = enterprise])
 
 AC_ARG_WITH([core],
             AS_HELP_STRING([--with-core], [specify Core directory path (default '../core/')]),
@@ -88,6 +90,11 @@ if test -n "$SHFMT"; then
     AM_CONDITIONAL([HAVE_SHFMT], [test -n "$SHFMT"])
 else
     AC_MSG_WARN([shfmt not found - some features may be unavailable])
+fi
+
+AC_CHECK_PROGS([RSYNC], [rsync])
+if test -z "$RSYNC"; then
+    AC_MSG_ERROR([rsync not found])
 fi
 
 AC_CONFIG_TESTDIR([tests])
