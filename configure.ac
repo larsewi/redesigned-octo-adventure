@@ -6,63 +6,65 @@ AC_INIT([buildscripts], [0.0.1], [https://github.com/larsewi/redesigned-octo-adv
 AC_CANONICAL_HOST
 AM_INIT_AUTOMAKE([-Wall -Werror foreign subdir-objects])
 
-AC_ARG_ENABLE([PROJECT],
-              AS_HELP_STRING([--project], [whether to build enterprise or community package (default=community)])
-              [PROJECT=$enableval],
-              [PROJECT=community])
-case "$PROJECT" in
-community|hub)
-    AC_MSG_NOTICE([Using project $PROJECT])
-    ;;
-*)
-    AC_MSG_ERROR([Unsupported project '$PROJECT'])
-    ;;
-esac
+AC_ARG_ENABLE([debug],
+              AS_HELP_STRING([--enable-debug], [whether to build with debug symbols]),
+              [if test "$enableval" = yes; then
+                BUILD_TYPE=debug
+              else
+                BUILD_TYPE=release
+              fi],
+              [BUILD_TYPE=debug])
+AC_MSG_NOTICE([Build type is $BUILD_TYPE])
 
-AC_ARG_ENABLE([role],
-              AS_HELP_STRING([--role], [whether to build hub or client package (default=agent)]),
-              [ROLE="$enableval"],
+AC_ARG_ENABLE([enterprise],
+              AS_HELP_STRING([--enable-enterprise], [whether to build enterprise features]),
+              [if test "$enableval" = yes; then
+                PROJECT=enterprise
+              else
+                PROJECT=community
+              fi],
+              [PROJECT=community])
+AC_MSG_NOTICE([Project is $PROJECT])
+
+AC_ARG_ENABLE([hub],
+              AS_HELP_STRING([--enable-hub], [whether to build hub features]),
+              [if test "$enableval" = yes; then
+                ROLE=hub
+              else
+                ROLE=agent
+              fi],
               [ROLE=agent])
-case "$ROLE" in
-agent|hub)
-    AC_MSG_NOTICE([Using role $ROLE])
-    ;;
-*)
-    AC_MSG_ERROR([Unsupported role '$ROLE'])
-    ;;
-esac
+AC_MSG_NOTICE([Role is $ROLE])
 
 AC_ARG_WITH([core],
-            AS_HELP_STRING([--with-core], [specify core directory path (default '../core/')]),
+            AS_HELP_STRING([--with-core], [specify Core directory path (default '../core/')]),
             [CORE_DIRECTORY="$withval"],
             [CORE_DIRECTORY="../core"])
-if test -d "$CORE_DIRECTORY"; then
-    AC_MSG_NOTICE([Using core directory path '$CORE_DIRECTORY'])
-else
-    AC_MSG_ERROR([Core path '$CORE_DIRECTORY' is not a directory])
-fi
+AC_MSG_NOTICE([Core path '$CORE_DIRECTORY'])
 
 AC_ARG_WITH([masterfiles],
-            AS_HELP_STRING([--with-masterfiles], [specify masterfiles directory path (default '../masterfiles/')]),
+            AS_HELP_STRING([--with-masterfiles], [specify Masterfiles directory path (default '../masterfiles/')]),
             [MASTERFILES_DIRECTORY="$withval"],
             [MASTERFILES_DIRECTORY="../masterfiles"])
-if test -d "$MASTERFILES_DIRECTORY"; then
-    AC_MSG_NOTICE([Using masterfiles directory path '$MASTERFILES_DIRECTORY'])
-else
-    AC_MSG_ERROR([Masterfiles path '$MASTERFILES_DIRECTORY' is not a directory])
-fi
+AC_MSG_NOTICE([Masterfiles path '$MASTERFILES_DIRECTORY'])
 
-# Checks for host.
-AC_MSG_CHECKING([for host os])
-case $host_os in
-linux*)
-    AC_MSG_RESULT([linux])
-    ;;
-*)
-    # TODO: Add support for more operating systems
-    AC_MSG_ERROR(["Unsupported host OS '$host_os'"])
-    ;;
-esac
+AC_ARG_WITH([enterprise],
+            AS_HELP_STRING([--with-enterprise], [specify Enterprise directory path (default '../enterprise/')]),
+            [ENTERPRISE_DIRECTORY="$withval"],
+            [ENTERPRISE_DIRECTORY="../enterprise"])
+AC_MSG_NOTICE([Enterprise directory path '$ENTERPRISE_DIRECTORY'])
+
+AC_ARG_WITH([nova],
+            AS_HELP_STRING([--with-nova], [specify Nova directory path (default '../nova/')]),
+            [NOVA_DIRECTORY="$withval"],
+            [NOVA_DIRECTORY="../nova"])
+AC_MSG_NOTICE([Nova directory path '$NOVA_DIRECTORY'])
+
+AC_ARG_WITH([mission-portal],
+            AS_HELP_STRING([--with-mission-portal], [specify Mission Portal directory path (default '../mission-portal/')]),
+            [MISSION_PORTAL_DIRECTORY="$withval"],
+            [MISSION_PORTAL_DIRECTORY="../mission-portal"])
+AC_MSG_NOTICE([Mission Portal directory path '$MISSION_PORTAL_DIRECTORY'])
 
 # Checks for programs.
 
