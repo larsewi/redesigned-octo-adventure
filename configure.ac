@@ -15,6 +15,7 @@ AC_ARG_ENABLE([debug],
               fi],
               [BUILD_TYPE=debug])
 AC_MSG_NOTICE([Build type is $BUILD_TYPE])
+AC_SUBST([BUILD_TYPE])
 
 AC_ARG_ENABLE([enterprise],
               AS_HELP_STRING([--enable-enterprise], [whether to build enterprise features]),
@@ -25,6 +26,7 @@ AC_ARG_ENABLE([enterprise],
               fi],
               [PROJECT=community])
 AC_MSG_NOTICE([Project is $PROJECT])
+AC_SUBST([PROJECT])
 
 AC_ARG_ENABLE([hub],
               AS_HELP_STRING([--enable-hub], [whether to build hub features]),
@@ -35,36 +37,42 @@ AC_ARG_ENABLE([hub],
               fi],
               [ROLE=agent])
 AC_MSG_NOTICE([Role is $ROLE])
+AC_SUBST([ROLE])
 
 AC_ARG_WITH([core],
             AS_HELP_STRING([--with-core], [specify Core directory path (default '../core/')]),
             [CORE_DIRECTORY="$withval"],
             [CORE_DIRECTORY="../core"])
 AC_MSG_NOTICE([Core path '$CORE_DIRECTORY'])
+AC_SUBST([CORE_DIRECTORY])
 
 AC_ARG_WITH([masterfiles],
             AS_HELP_STRING([--with-masterfiles], [specify Masterfiles directory path (default '../masterfiles/')]),
             [MASTERFILES_DIRECTORY="$withval"],
             [MASTERFILES_DIRECTORY="../masterfiles"])
 AC_MSG_NOTICE([Masterfiles path '$MASTERFILES_DIRECTORY'])
+AC_SUBST([MASTERFILES_DIRECTORY])
 
 AC_ARG_WITH([enterprise],
             AS_HELP_STRING([--with-enterprise], [specify Enterprise directory path (default '../enterprise/')]),
             [ENTERPRISE_DIRECTORY="$withval"],
             [ENTERPRISE_DIRECTORY="../enterprise"])
 AC_MSG_NOTICE([Enterprise directory path '$ENTERPRISE_DIRECTORY'])
+AC_SUBST([ENTERPRISE_DIRECTORY])
 
 AC_ARG_WITH([nova],
             AS_HELP_STRING([--with-nova], [specify Nova directory path (default '../nova/')]),
             [NOVA_DIRECTORY="$withval"],
             [NOVA_DIRECTORY="../nova"])
 AC_MSG_NOTICE([Nova directory path '$NOVA_DIRECTORY'])
+AC_SUBST([NOVA_DIRECTORY])
 
 AC_ARG_WITH([mission-portal],
             AS_HELP_STRING([--with-mission-portal], [specify Mission Portal directory path (default '../mission-portal/')]),
             [MISSION_PORTAL_DIRECTORY="$withval"],
             [MISSION_PORTAL_DIRECTORY="../mission-portal"])
 AC_MSG_NOTICE([Mission Portal directory path '$MISSION_PORTAL_DIRECTORY'])
+AC_SUBST([MISSION_PORTAL_DIRECTORY])
 
 # Checks for programs.
 
@@ -85,7 +93,6 @@ fi
 AC_CONFIG_TESTDIR([tests])
 AC_CONFIG_FILES([Makefile
                  src/Makefile
-                 src/utils/Makefile
                  tests/Makefile])
 
 AC_OUTPUT

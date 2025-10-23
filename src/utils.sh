@@ -1,7 +1,7 @@
 #!/bin/env sh
 #
 # Never run this script! Always source it with:
-# . "$(dirname "$0")"/utils/logger.sh
+# . "$(dirname "$0")"/utils.sh
 #
 
 # log_debug: Print a debug message with script name prefix
