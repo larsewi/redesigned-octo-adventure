@@ -49,58 +49,33 @@ AM_CONDITIONAL([HAVE_HUB], [test "$ROLE" = enterprise])
 
 AC_ARG_WITH([core],
             AS_HELP_STRING([--with-core], [with local core project]),
-            [CORE_PATH="$withval"])
-AC_MSG_CHECKING([for local core project])
-if test -n "$CORE_PATH"; then
-    AC_MSG_RESULT([$CORE_PATH])
-else
-    AC_MSG_RESULT([no])
-fi
-AC_SUBST([CORE_PATH])
+            [LOCAL_CORE_PATH="export CORE_PATH=\"$withval\""],
+            [LOCAL_CORE_PATH="# export CORE_PATH="])
+AC_SUBST([LOCAL_CORE_PATH])
 
 AC_ARG_WITH([masterfiles],
             AS_HELP_STRING([--with-masterfiles], [with local masterfiles project]),
-            [MASTERFILES_PATH="$withval"])
-AC_MSG_CHECKING([for local masterfiles project])
-if test -n "$MASTERFILES_PATH"; then
-    AC_MSG_RESULT([$MASTERFILES_PATH])
-else
-    AC_MSG_RESULT([no])
-fi
-    AC_SUBST([MASTERFILES_PATH])
+            [LOCAL_MASTERFILES_PATH="export MASTERFILES_PATH=\"$withval\""],
+            [LOCAL_MASTERFILES_PATH="# export MASTERFILES_PATH="])
+AC_SUBST([LOCAL_MASTERFILES_PATH])
 
 AC_ARG_WITH([enterprise],
             AS_HELP_STRING([--with-enterprise], [with local enterprise project]),
-            [ENTERPRISE_PATH="$withval"])
-AC_MSG_CHECKING([for local enterprise project])
-if test -n "$ENTERPRISE_PATH"; then
-    AC_MSG_RESULT([$ENTERPRISE_PATH])
-else
-    AC_MSG_RESULT([no])
-fi
-AC_SUBST([ENTERPRISE_PATH])
+            [LOCAL_ENTERPRISE_PATH="export ENTERPRISE_PATH=\"$withval\""],
+            [LOCAL_ENTERPRISE_PATH="# export ENTERPRISE_PATH="])
+AC_SUBST([LOCAL_ENTERPRISE_PATH])
 
 AC_ARG_WITH([nova],
             AS_HELP_STRING([--with-nova], [with local nova project]),
-            [NOVA_PATH="$withval"])
-AC_MSG_CHECKING([for local nova project])
-if test -n "$NOVA_PATH"; then
-    AC_MSG_RESULT([$NOVA_PATH])
-else
-    AC_MSG_RESULT([no])
-fi
-AC_SUBST([NOVA_PATH])
+            [LOCAL_NOVA_PATH="export NOVA_PATH\"$withval\""],
+            [LOCAL_NOVA_PATH="# export NOVA_PATH="])
+AC_SUBST([LOCAL_NOVA_PATH])
 
 AC_ARG_WITH([mission-portal],
             AS_HELP_STRING([--with-mission-portal], [with local mission-portal project]),
-            [MISSION_PORTAL_PATH="$withval"])
-AC_MSG_CHECKING([for local mission-portal project])
-if test -n "$MISSION_PORTAL_PATH"; then
-    AC_MSG_RESULT([$MISSION_PORTAL_PATH])
-else
-    AC_MSG_RESULT([no])
-fi
-AC_SUBST([MISSION_PORTAL_PATH])
+            [LOCAL_MISSION_PORTAL_PATH="export MISSION_PORTAL_PATH=\"$withval\""],
+            [LOCAL_MISSION_PORTAL_PATH="# export NOVA_PATH="])
+AC_SUBST([LOCAL_MISSION_PORTAL_PATH])
 
 # Checks for programs.
 
