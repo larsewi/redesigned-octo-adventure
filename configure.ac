@@ -9,6 +9,9 @@ AC_CANONICAL_HOST
 AC_SUBST([host_cpu])
 AC_SUBST([host_os])
 
+AX_COUNT_CPUS
+AC_SUBST([CPU_COUNT])
+
 AC_ARG_ENABLE([debug],
               AS_HELP_STRING([--enable-debug], [whether to build with debug symbols]),
               [if test "$enableval" = yes; then
@@ -45,39 +48,59 @@ AC_SUBST([ROLE])
 AM_CONDITIONAL([HAVE_HUB], [test "$ROLE" = enterprise])
 
 AC_ARG_WITH([core],
-            AS_HELP_STRING([--with-core], [specify Core directory path (default '../core/')]),
-            [CORE_DIRECTORY="$withval"],
-            [CORE_DIRECTORY="../core"])
-AC_MSG_NOTICE([Core path '$CORE_DIRECTORY'])
-AC_SUBST([CORE_DIRECTORY])
+            AS_HELP_STRING([--with-core], [with local core project]),
+            [CORE_PATH="$withval"])
+AC_MSG_CHECKING([for local core project])
+if test -n "$CORE_PATH"; then
+    AC_MSG_RESULT([$CORE_PATH])
+else
+    AC_MSG_RESULT([no])
+fi
+AC_SUBST([CORE_PATH])
 
 AC_ARG_WITH([masterfiles],
-            AS_HELP_STRING([--with-masterfiles], [specify Masterfiles directory path (default '../masterfiles/')]),
-            [MASTERFILES_DIRECTORY="$withval"],
-            [MASTERFILES_DIRECTORY="../masterfiles"])
-AC_MSG_NOTICE([Masterfiles path '$MASTERFILES_DIRECTORY'])
-AC_SUBST([MASTERFILES_DIRECTORY])
+            AS_HELP_STRING([--with-masterfiles], [with local masterfiles project]),
+            [MASTERFILES_PATH="$withval"])
+AC_MSG_CHECKING([for local masterfiles project])
+if test -n "$MASTERFILES_PATH"; then
+    AC_MSG_RESULT([$MASTERFILES_PATH])
+else
+    AC_MSG_RESULT([no])
+fi
+    AC_SUBST([MASTERFILES_PATH])
 
 AC_ARG_WITH([enterprise],
-            AS_HELP_STRING([--with-enterprise], [specify Enterprise directory path (default '../enterprise/')]),
-            [ENTERPRISE_DIRECTORY="$withval"],
-            [ENTERPRISE_DIRECTORY="../enterprise"])
-AC_MSG_NOTICE([Enterprise directory path '$ENTERPRISE_DIRECTORY'])
-AC_SUBST([ENTERPRISE_DIRECTORY])
+            AS_HELP_STRING([--with-enterprise], [with local enterprise project]),
+            [ENTERPRISE_PATH="$withval"])
+AC_MSG_CHECKING([for local enterprise project])
+if test -n "$ENTERPRISE_PATH"; then
+    AC_MSG_RESULT([$ENTERPRISE_PATH])
+else
+    AC_MSG_RESULT([no])
+fi
+AC_SUBST([ENTERPRISE_PATH])
 
 AC_ARG_WITH([nova],
-            AS_HELP_STRING([--with-nova], [specify Nova directory path (default '../nova/')]),
-            [NOVA_DIRECTORY="$withval"],
-            [NOVA_DIRECTORY="../nova"])
-AC_MSG_NOTICE([Nova directory path '$NOVA_DIRECTORY'])
-AC_SUBST([NOVA_DIRECTORY])
+            AS_HELP_STRING([--with-nova], [with local nova project]),
+            [NOVA_PATH="$withval"])
+AC_MSG_CHECKING([for local nova project])
+if test -n "$NOVA_PATH"; then
+    AC_MSG_RESULT([$NOVA_PATH])
+else
+    AC_MSG_RESULT([no])
+fi
+AC_SUBST([NOVA_PATH])
 
 AC_ARG_WITH([mission-portal],
-            AS_HELP_STRING([--with-mission-portal], [specify Mission Portal directory path (default '../mission-portal/')]),
-            [MISSION_PORTAL_DIRECTORY="$withval"],
-            [MISSION_PORTAL_DIRECTORY="../mission-portal"])
-AC_MSG_NOTICE([Mission Portal directory path '$MISSION_PORTAL_DIRECTORY'])
-AC_SUBST([MISSION_PORTAL_DIRECTORY])
+            AS_HELP_STRING([--with-mission-portal], [with local mission-portal project]),
+            [MISSION_PORTAL_PATH="$withval"])
+AC_MSG_CHECKING([for local mission-portal project])
+if test -n "$MISSION_PORTAL_PATH"; then
+    AC_MSG_RESULT([$MISSION_PORTAL_PATH])
+else
+    AC_MSG_RESULT([no])
+fi
+AC_SUBST([MISSION_PORTAL_PATH])
 
 # Checks for programs.
 

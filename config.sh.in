@@ -4,11 +4,19 @@
 #
 
 # System type variables from AC_CANONICAL_HOST
-HOST_CPU=@host_cpu@
-HOST_VENDOR=@host_vendor@
+export HOST_CPU="@host_cpu@"
+export HOST_OS="@host_os@"
+export CPU_COUNT="@CPU_COUNT@"
+
+# Project paths (optional)
+export CORE_PATH="@CORE_PATH@"
+export MASTERFILES_PATH="@MASTERFILES_PATH@"
+export ENTERPRISE_PATH="@ENTERPRISE_PATH@"
+export NOVA_PATH="@NOVA_PATH@"
+export MISSION_PORTAL_PATH="@MISSION_PORTAL_PATH@"
 
 # Programs
-RSYNC=@RSYNC@
-MAKE=@MAKE@
-FUSER=@FUSER@
-PATCH=@PATCH@
+export RSYNC="@RSYNC@"
+export MAKE="@MAKE@"
+export FUSER="@FUSER@"
+export PATCH="@PATCH@"
