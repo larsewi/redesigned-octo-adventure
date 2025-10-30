@@ -1,0 +1,14 @@
+#!/usr/bin/env sh
+#
+# config.sh.  Generated from config.sh.in by configure.
+#
+
+# System type variables from AC_CANONICAL_HOST
+HOST_CPU=@host_cpu@
+HOST_VENDOR=@host_vendor@
+
+# Programs
+RSYNC=@RSYNC@
+MAKE=@MAKE@
+FUSER=@FUSER@
+PATCH=@PATCH@

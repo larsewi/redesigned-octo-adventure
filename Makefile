@@ -97,7 +97,7 @@ DIST_COMMON = $(srcdir)/Makefile.am $(top_srcdir)/configure \
 am__CONFIG_DISTCLEAN_FILES = config.status config.cache config.log \
  configure.lineno config.status.lineno
 mkinstalldirs = $(install_sh) -d
-CONFIG_CLEAN_FILES =
+CONFIG_CLEAN_FILES = config.sh
 CONFIG_CLEAN_VPATH_FILES =
 AM_V_P = $(am__v_P_$(V))
 am__v_P_ = $(am__v_P_$(AM_DEFAULT_VERBOSITY))
@@ -152,8 +152,8 @@ am__define_uniq_tagged_files = \
     if test -f "$$i"; then echo $$i; else echo $(srcdir)/$$i; fi; \
   done | $(am__uniquify_input)`
 DIST_SUBDIRS = $(SUBDIRS)
-am__DIST_COMMON = $(srcdir)/Makefile.in config.guess config.sub \
-	install-sh missing
+am__DIST_COMMON = $(srcdir)/Makefile.in $(srcdir)/config.sh.in \
+	config.guess config.sub install-sh missing
 DISTFILES = $(DIST_COMMON) $(DIST_SOURCES) $(TEXINFOS) $(EXTRA_DIST)
 distdir = $(PACKAGE)-$(VERSION)
 top_distdir = $(distdir)
@@ -216,6 +216,7 @@ ECHO_N = -n
 ECHO_T = 
 ENTERPRISE_DIRECTORY = ../enterprise
 ETAGS = etags
+FUSER = /usr/bin/fuser
 GIT = git
 INSTALL = /usr/bin/install -c
 INSTALL_DATA = ${INSTALL} -m 644
@@ -225,6 +226,7 @@ INSTALL_STRIP_PROGRAM = $(install_sh) -c -s
 LIBOBJS = 
 LIBS = 
 LTLIBOBJS = 
+MAKE = /usr/bin/gmake
 MAKEINFO = ${SHELL} '/home/larsewi/ntech/redesigned-octo-adventure/missing' makeinfo
 MASTERFILES_DIRECTORY = ../masterfiles
 MISSION_PORTAL_DIRECTORY = ../mission-portal
@@ -237,10 +239,11 @@ PACKAGE_STRING = buildscripts 0.0.1
 PACKAGE_TARNAME = buildscripts
 PACKAGE_URL = 
 PACKAGE_VERSION = 0.0.1
+PATCH = /usr/bin/patch
 PATH_SEPARATOR = :
-PROJECT = enterprise
-ROLE = hub
-RSYNC = rsync
+PROJECT = community
+ROLE = agent
+RSYNC = /usr/bin/rsync
 SET_MAKE = 
 SHELL = /bin/bash
 SHFMT = shfmt
@@ -332,6 +335,8 @@ $(top_srcdir)/configure:  $(am__configure_deps)
 $(ACLOCAL_M4):  $(am__aclocal_m4_deps)
 	$(am__cd) $(srcdir) && $(ACLOCAL) $(ACLOCAL_AMFLAGS)
 $(am__aclocal_m4_deps):
+config.sh: $(top_builddir)/config.status $(srcdir)/config.sh.in
+	cd $(top_builddir) && $(SHELL) ./config.status $@
 
 # This directory's subdirectories are mostly independent; you can cd
 # into them and run 'make' without going through this Makefile.

@@ -46,12 +46,8 @@ m4/lt~obsolete.m4
 # (which is called by configure script))
 Makefile
 
-/atconfig
+/tests/atconfig
 /tests/package.m4
 /tests/testsuite
 /testsuite.log
-/core
-/enterprise
-/masterfiles
-/mission-portal
-/nova
+/config.sh

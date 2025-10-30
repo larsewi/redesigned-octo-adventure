@@ -3,8 +3,11 @@
 
 AC_PREREQ([2.71])
 AC_INIT([buildscripts], [0.0.1], [https://github.com/larsewi/redesigned-octo-adventure])
-AC_CANONICAL_HOST
 AM_INIT_AUTOMAKE([-Wall -Werror foreign subdir-objects])
+
+AC_CANONICAL_HOST
+AC_SUBST([host_cpu])
+AC_SUBST([host_os])
 
 AC_ARG_ENABLE([debug],
               AS_HELP_STRING([--enable-debug], [whether to build with debug symbols]),
@@ -92,13 +95,29 @@ else
     AC_MSG_WARN([shfmt not found - some features may be unavailable])
 fi
 
-AC_CHECK_PROGS([RSYNC], [rsync])
+AC_PATH_PROGS([RSYNC], [rsync])
 if test -z "$RSYNC"; then
     AC_MSG_ERROR([rsync not found])
 fi
 
+AC_PATH_PROGS([MAKE], [gmake make])
+if test -z "$MAKE"; then
+    AC_MSG_ERROR([make not found])
+fi
+
+AC_PATH_PROGS([FUSER], [fuser])
+if test -z "$FUSER"; then
+    AC_MSG_ERROR([fuser not found])
+fi
+
+AC_PATH_PROGS([PATCH], [gpatch patch])
+if test -z "$PATCH"; then
+    AC_MSG_ERROR([patch not found])
+fi
+
 AC_CONFIG_TESTDIR([tests])
 AC_CONFIG_FILES([Makefile
+                 config.sh
                  src/Makefile
                  tests/Makefile])
 
