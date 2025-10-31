@@ -16,3 +16,21 @@ AT_CHECK([log_error "Hello World!"], 0, [], [testsuite: error: Hello World!
 ########################################
 AT_CLEANUP
 ########################################
+
+########################################
+AT_SETUP([Test config.sh])
+########################################
+
+. $abs_top_builddir/config.sh
+AT_CHECK([test -n "$HOST_CPU"], 0)
+AT_CHECK([test -n "$HOST_OS"], 0)
+AT_CHECK([test -n "$CPU_COUNT"], 0)
+
+AT_CHECK([test -n "$RSYNC"], 0)
+AT_CHECK([test -n "$MAKE"], 0)
+AT_CHECK([test -n "$FUSER"], 0)
+AT_CHECK([test -n "$PATCH"], 0)
+
+########################################
+AT_CLEANUP
+########################################

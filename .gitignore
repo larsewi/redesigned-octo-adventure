@@ -49,5 +49,5 @@ Makefile
 /tests/atconfig
 /tests/package.m4
 /tests/testsuite
-/testsuite.log
+/tests/testsuite.log
 /config.sh
