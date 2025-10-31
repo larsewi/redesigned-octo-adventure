@@ -178,8 +178,9 @@ fi
 
 AC_CONFIG_TESTDIR([tests])
 AC_CONFIG_FILES([Makefile
-                 config.sh
+                 src/config.sh
                  src/Makefile
+                 src/deps/Makefile
                  tests/Makefile])
 
 AC_OUTPUT

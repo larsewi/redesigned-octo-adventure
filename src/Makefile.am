@@ -1,1 +1,2 @@
-EXTRA_DIST = utils.sh
+EXTRA_DIST = utils.h
+SUBDIRS = deps .

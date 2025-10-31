@@ -1,0 +1,30 @@
+#!/usr/bin/env sh
+#
+# config.sh.  Generated from config.sh.in by configure.
+#
+
+# System type variables
+export OS_NAME="@OS_NAME@"
+export OS_VERSION="@OS_VERSION@"
+export CPU_COUNT="@CPU_COUNT@"
+
+# Project paths
+@CORE_PATH@
+@MASTERFILES_PATH@
+@ENTERPRISE_PATH@
+@NOVA_PATH@
+@MISSION_PORTAL_PATH@
+
+# Project branches
+@BASE_BRANCH@
+@CORE_BRANCH@
+@MASTERFILES_BRANCH@
+@ENTERPRISE_BRANCH@
+@NOVA_BRANCH@
+@MISSION_PORTAL_BRANCH@
+
+# Programs
+export RSYNC="@RSYNC@"
+export MAKE="@MAKE@"
+export FUSER="@FUSER@"
+export PATCH="@PATCH@"
