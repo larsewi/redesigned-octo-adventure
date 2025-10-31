@@ -19,18 +19,15 @@
 
 set -e
 
-. "$(dirname "$0")"/utils.sh
-
 SOURCE=$1
 TARBALL=$2
 
-log_debug "Fetching tarball $TARBALL..."
-run_and_print_on_failure "$WGET" "$SOURCE/$TARBALL"
+log_info "Fetching tarball '$TARBALL'..."
+run_and_print_on_failure "$WGET" "$BUILD_DIR/$SOURCE/$TARBALL"
 
-log_debug "Verifying checksum '$CHECKSUM' of tarball $TARBALL..."
-if ! "$SHA256SUM" --check --ignore-missing checksums.txt; then
-    log_error "Failed to verify integrity of '$TARBALL'"
+log_info "Verifying integrity of '$TARBALL'..."
+if ! "$SHA256SUM" --check --ignore-missing --quiet checksums.txt; then
     log_info "Deleting '$TARBALL'..."
     rm -f "$TARBALL"
-    exit 1
+    log_fatal "Could not verify integrity of tarball '$TARBALL'..."
 fi

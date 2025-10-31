@@ -3,6 +3,9 @@
 # config.sh.  Generated from config.sh.in by configure.
 #
 
+export SOURCE_DIR=@top_srcdir@
+export BUILD_DIR=@top_builddir@
+
 # System type variables
 export OS_NAME="@OS_NAME@"
 export OS_VERSION="@OS_VERSION@"
@@ -28,3 +31,7 @@ export RSYNC="@RSYNC@"
 export MAKE="@MAKE@"
 export FUSER="@FUSER@"
 export PATCH="@PATCH@"
+export WGET="@WGET@"
+export SHA256SUM="@SHA256SUM@"
+export GREP="@GREP@"
+export TAR="@TAR@"

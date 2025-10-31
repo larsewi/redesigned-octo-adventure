@@ -1,8 +1,14 @@
-all-local: curl-8.16.0.tar.gz
+CURL_VERSION=8.16.0
 
-curl-8.16.0.tar.gz:
-	chmod +x fetch-tarball.sh
-	./fetch-tarball.sh https://curl.haxx.se/download/ $@
+all-local: curl-$(CURL_VERSION)/
+
+curl-$(CURL_VERSION)/: curl-$(CURL_VERSION).tar.gz
+	@TAR@ -xf $<
+
+curl-$(CURL_VERSION).tar.gz:
+	@WGET@ "https://curl.haxx.se/download/$@"
+	@SHA256SUM@ --check --ignore-missing --quiet checksums.txt
 
 clean-local:
-	rm -f curl-8.16.0.tar.gz
+	rm -f curl-$(CURL_VERSION).tar.gz
+	rm -rf curl-$(CURL_VERSION)/

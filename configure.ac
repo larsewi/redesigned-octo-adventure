@@ -191,9 +191,14 @@ if test -z "$MKTEMP"; then
     AC_MSG_ERROR([mktemp not found])
 fi
 
+AC_PATH_PROGS([TAR], [tar])
+if test -z "$TAR"; then
+    AC_MSG_ERROR([tar not found])
+fi
+
 AC_CONFIG_TESTDIR([tests])
 AC_CONFIG_FILES([Makefile
-                 src/config.sh
+                 config.sh
                  src/Makefile
                  tests/Makefile])
 
