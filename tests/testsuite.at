@@ -32,6 +32,13 @@ AT_CHECK([grep -q "export ENTERPRISE_PATH=" "$abs_top_builddir"/config.sh])
 AT_CHECK([grep -q "export NOVA_PATH=" "$abs_top_builddir"/config.sh])
 AT_CHECK([grep -q "export MISSION_PORTAL_PATH=" "$abs_top_builddir"/config.sh])
 
+AT_CHECK([test -n "$BASE_BRANCH"], 0)
+AT_CHECK([grep -q "export CORE_BRANCH=" "$abs_top_builddir"/config.sh])
+AT_CHECK([grep -q "export MASTERFILES_BRANCH=" "$abs_top_builddir"/config.sh])
+AT_CHECK([grep -q "export ENTERPRISE_BRANCH=" "$abs_top_builddir"/config.sh])
+AT_CHECK([grep -q "export NOVA_BRANCH=" "$abs_top_builddir"/config.sh])
+AT_CHECK([grep -q "export MISSION_PORTAL_BRANCH=" "$abs_top_builddir"/config.sh])
+
 AT_CHECK([test -n "$RSYNC"], 0)
 AT_CHECK([test -n "$MAKE"], 0)
 AT_CHECK([test -n "$FUSER"], 0)

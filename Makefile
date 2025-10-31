@@ -206,7 +206,10 @@ AUTOCONF = ${SHELL} '/home/larsewi/ntech/redesigned-octo-adventure/missing' auto
 AUTOHEADER = ${SHELL} '/home/larsewi/ntech/redesigned-octo-adventure/missing' autoheader
 AUTOMAKE = ${SHELL} '/home/larsewi/ntech/redesigned-octo-adventure/missing' automake-1.16
 AWK = mawk
+BASE_BRANCH = export BASE_BRANCH=master
 BUILD_TYPE = debug
+CORE_BRANCH = # export CORE_BRANCH=
+CORE_PATH = # export CORE_PATH=
 CPU_COUNT = 24
 CSCOPE = cscope
 CTAGS = ctags
@@ -216,6 +219,8 @@ ECHO_C =
 ECHO_N = -n
 ECHO_T = 
 EGREP = /usr/bin/grep -E
+ENTERPRISE_BRANCH = # export ENTERPRISE_BRANCH=
+ENTERPRISE_PATH = # export ENTERPRISE_PATH=
 ETAGS = etags
 FUSER = /usr/bin/fuser
 GIT = git
@@ -227,15 +232,16 @@ INSTALL_SCRIPT = ${INSTALL}
 INSTALL_STRIP_PROGRAM = $(install_sh) -c -s
 LIBOBJS = 
 LIBS = 
-LOCAL_CORE_PATH = # export CORE_PATH=
-LOCAL_ENTERPRISE_PATH = # export ENTERPRISE_PATH=
-LOCAL_MASTERFILES_PATH = # export MASTERFILES_PATH=
-LOCAL_MISSION_PORTAL_PATH = # export MISSION_PORTAL_PATH=
-LOCAL_NOVA_PATH = # export NOVA_PATH=
 LTLIBOBJS = 
 MAKE = /usr/bin/gmake
 MAKEINFO = ${SHELL} '/home/larsewi/ntech/redesigned-octo-adventure/missing' makeinfo
+MASTERFILES_BRANCH = # export MASTERFILES_BRANCH=
+MASTERFILES_PATH = # export MASTERFILES_PATH=
+MISSION_PORTAL_BRANCH = # export MISSION_PORTAL_BRANCH=
+MISSION_PORTAL_PATH = # export MISSION_PORTAL_PATH=
 MKDIR_P = /usr/bin/mkdir -p
+NOVA_BRANCH = # export NOVA_BRANCH=
+NOVA_PATH = # export NOVA_PATH=
 PACKAGE = buildscripts
 PACKAGE_BUGREPORT = https://github.com/larsewi/redesigned-octo-adventure
 PACKAGE_NAME = buildscripts

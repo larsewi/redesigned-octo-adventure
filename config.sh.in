@@ -3,17 +3,25 @@
 # config.sh.  Generated from config.sh.in by configure.
 #
 
-# System type variables from AC_CANONICAL_HOST
+# System type variables
 export HOST_CPU="@host_cpu@"
 export HOST_OS="@host_os@"
 export CPU_COUNT="@CPU_COUNT@"
 
-# Project paths (optional)
-@LOCAL_CORE_PATH@
-@LOCAL_MASTERFILES_PATH@
-@LOCAL_ENTERPRISE_PATH@
-@LOCAL_NOVA_PATH@
-@LOCAL_MISSION_PORTAL_PATH@
+# Project paths
+@CORE_PATH@
+@MASTERFILES_PATH@
+@ENTERPRISE_PATH@
+@NOVA_PATH@
+@MISSION_PORTAL_PATH@
+
+# Project branches
+@BASE_BRANCH@
+@CORE_BRANCH@
+@MASTERFILES_BRANCH@
+@ENTERPRISE_BRANCH@
+@NOVA_BRANCH@
+@MISSION_PORTAL_BRANCH@
 
 # Programs
 export RSYNC="@RSYNC@"
