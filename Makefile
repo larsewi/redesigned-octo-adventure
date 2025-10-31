@@ -240,6 +240,7 @@ MASTERFILES_PATH = # export MASTERFILES_PATH=
 MISSION_PORTAL_BRANCH = # export MISSION_PORTAL_BRANCH=
 MISSION_PORTAL_PATH = # export MISSION_PORTAL_PATH=
 MKDIR_P = /usr/bin/mkdir -p
+MKTEMP = /usr/bin/mktemp
 NOVA_BRANCH = # export NOVA_BRANCH=
 NOVA_PATH = # export NOVA_PATH=
 OS_NAME = ubuntu
@@ -260,10 +261,12 @@ PROJECT = community
 ROLE = agent
 RSYNC = /usr/bin/rsync
 SET_MAKE = 
+SHA256SUM = /usr/bin/sha256sum
 SHELL = /bin/bash
 SHFMT = shfmt
 STRIP = 
 VERSION = 24.04.3 LTS (Noble Numbat)
+WGET = /usr/bin/wget
 abs_builddir = /home/larsewi/ntech/redesigned-octo-adventure
 abs_srcdir = /home/larsewi/ntech/redesigned-octo-adventure
 abs_top_builddir = /home/larsewi/ntech/redesigned-octo-adventure

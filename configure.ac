@@ -176,11 +176,25 @@ if test -z "$PATCH"; then
     AC_MSG_ERROR([patch not found])
 fi
 
+AC_PATH_PROGS([WGET], [wget])
+if test -z "$WGET"; then
+    AC_MSG_ERROR([wget not found])
+fi
+
+AC_PATH_PROGS([SHA256SUM], [sha256sum])
+if test -z "$SHA256SUM"; then
+    AC_MSG_ERROR([sha256sum not found])
+fi
+
+AC_PATH_PROGS([MKTEMP], [mktemp])
+if test -z "$MKTEMP"; then
+    AC_MSG_ERROR([mktemp not found])
+fi
+
 AC_CONFIG_TESTDIR([tests])
 AC_CONFIG_FILES([Makefile
                  src/config.sh
                  src/Makefile
-                 src/deps/Makefile
                  tests/Makefile])
 
 AC_OUTPUT
