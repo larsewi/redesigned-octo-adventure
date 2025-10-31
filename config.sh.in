@@ -4,8 +4,8 @@
 #
 
 # System type variables
-export HOST_CPU="@host_cpu@"
-export HOST_OS="@host_os@"
+export OS_NAME="@OS_NAME@"
+export OS_VERSION="@OS_VERSION@"
 export CPU_COUNT="@CPU_COUNT@"
 
 # Project paths

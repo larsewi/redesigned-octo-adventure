@@ -242,6 +242,11 @@ MISSION_PORTAL_PATH = # export MISSION_PORTAL_PATH=
 MKDIR_P = /usr/bin/mkdir -p
 NOVA_BRANCH = # export NOVA_BRANCH=
 NOVA_PATH = # export NOVA_PATH=
+OS_NAME = ubuntu
+OS_VERSION = 24.04
+OS_VERSION_MAJOR = 
+OS_VERSION_MINOR = 
+OS_VERSION_PATCH = 
 PACKAGE = buildscripts
 PACKAGE_BUGREPORT = https://github.com/larsewi/redesigned-octo-adventure
 PACKAGE_NAME = buildscripts
@@ -258,7 +263,7 @@ SET_MAKE =
 SHELL = /bin/bash
 SHFMT = shfmt
 STRIP = 
-VERSION = 0.0.1
+VERSION = 24.04.3 LTS (Noble Numbat)
 abs_builddir = /home/larsewi/ntech/redesigned-octo-adventure
 abs_srcdir = /home/larsewi/ntech/redesigned-octo-adventure
 abs_top_builddir = /home/larsewi/ntech/redesigned-octo-adventure

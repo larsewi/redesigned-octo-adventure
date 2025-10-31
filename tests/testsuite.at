@@ -22,8 +22,8 @@ AT_SETUP([Test config.sh])
 ########################################
 
 . "$abs_top_builddir"/config.sh
-AT_CHECK([test -n "$HOST_CPU"], 0)
-AT_CHECK([test -n "$HOST_OS"], 0)
+AT_CHECK([test -n "$OS_NAME"], 0)
+AT_CHECK([test -n "$OS_VERSION"], 0)
 AT_CHECK([test -n "$CPU_COUNT"], 0)
 
 AT_CHECK([grep -q "export CORE_PATH=" "$abs_top_builddir"/config.sh])

@@ -5,12 +5,33 @@ AC_PREREQ([2.71])
 AC_INIT([buildscripts], [0.0.1], [https://github.com/larsewi/redesigned-octo-adventure])
 AM_INIT_AUTOMAKE([-Wall -Werror foreign subdir-objects])
 
-AC_CANONICAL_HOST
-AC_SUBST([host_cpu])
-AC_SUBST([host_os])
+# System type
 
+AC_CANONICAL_HOST
 AX_COUNT_CPUS
 AC_SUBST([CPU_COUNT])
+
+AC_MSG_CHECKING([for OS and distribution])
+case "$host_os" in
+linux*)
+    AC_MSG_CHECKING([for Linux distribution])
+    if test -f /etc/os-release; then
+        . /etc/os-release
+        OS_NAME="$ID"
+        OS_VERSION="$VERSION_ID"
+    fi
+    ;;
+*)
+    OS_NAME="$host_os"
+    OS_VERSION="$(uname -r)"
+    ;;
+esac
+
+AC_SUBST([OS_NAME])
+AC_SUBST([OS_VERSION])
+AC_SUBST([OS_VERSION_MAJOR])
+AC_SUBST([OS_VERSION_MINOR])
+AC_SUBST([OS_VERSION_PATCH])
 
 # Configure features
 
