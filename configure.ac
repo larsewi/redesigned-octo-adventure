@@ -200,6 +200,7 @@ AC_CONFIG_TESTDIR([tests])
 AC_CONFIG_FILES([Makefile
                  config.sh
                  src/Makefile
-                 tests/Makefile])
+                 tests/Makefile],
+                 [chmod +x config.sh])
 
 AC_OUTPUT

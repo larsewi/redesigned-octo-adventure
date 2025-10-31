@@ -17,8 +17,6 @@
 
 set -e
 
-. "$(dirname "$0")"/utils.sh
-
 TARBALL=$1
 
 log_debug "Extracting tarball '$TARBALL'..."

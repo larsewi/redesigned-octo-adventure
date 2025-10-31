@@ -1,2 +1,3 @@
 /config.sh
 *.tar.gz
+*.stamp
