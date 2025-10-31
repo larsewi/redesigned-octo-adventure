@@ -5,7 +5,7 @@ AT_COLOR_TESTS
 AT_SETUP([Test logging functions])
 ########################################
 
-. $abs_top_builddir/src/utils.sh
+. "$abs_top_builddir"/src/utils.sh
 AT_CHECK([log_debug "Hello World!"], 0, [testsuite: debug: Hello World!
 ])
 AT_CHECK([log_info "Hello World!"], 0, [testsuite: info: Hello World!
@@ -21,10 +21,16 @@ AT_CLEANUP
 AT_SETUP([Test config.sh])
 ########################################
 
-. $abs_top_builddir/config.sh
+. "$abs_top_builddir"/config.sh
 AT_CHECK([test -n "$HOST_CPU"], 0)
 AT_CHECK([test -n "$HOST_OS"], 0)
 AT_CHECK([test -n "$CPU_COUNT"], 0)
+
+AT_CHECK([grep -q "export CORE_PATH=" "$abs_top_builddir"/config.sh])
+AT_CHECK([grep -q "export MASTERFILES_PATH=" "$abs_top_builddir"/config.sh])
+AT_CHECK([grep -q "export ENTERPRISE_PATH=" "$abs_top_builddir"/config.sh])
+AT_CHECK([grep -q "export NOVA_PATH=" "$abs_top_builddir"/config.sh])
+AT_CHECK([grep -q "export MISSION_PORTAL_PATH=" "$abs_top_builddir"/config.sh])
 
 AT_CHECK([test -n "$RSYNC"], 0)
 AT_CHECK([test -n "$MAKE"], 0)

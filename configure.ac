@@ -74,7 +74,7 @@ AC_SUBST([LOCAL_NOVA_PATH])
 AC_ARG_WITH([mission-portal],
             AS_HELP_STRING([--with-mission-portal], [with local mission-portal project]),
             [LOCAL_MISSION_PORTAL_PATH="export MISSION_PORTAL_PATH=\"$withval\""],
-            [LOCAL_MISSION_PORTAL_PATH="# export NOVA_PATH="])
+            [LOCAL_MISSION_PORTAL_PATH="# export MISSION_PORTAL_PATH="])
 AC_SUBST([LOCAL_MISSION_PORTAL_PATH])
 
 # Checks for programs.
