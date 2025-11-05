@@ -9,10 +9,10 @@
 
 PACKAGE_NAME="$1"
 PACKAGE_VERSION="$2"
-BUILD_DATE="$3"   
+BUILD_DATE="$3"
 
 mkdir "$PACKAGE_NAME-$PACKAGE_VERSION/debian"
-cat << EOF > "$PACKAGE_NAME"-"$PACKAGE_VERSION"/debian/changelog
+cat <<EOF >"$PACKAGE_NAME"-"$PACKAGE_VERSION"/debian/changelog
 cfbuild-$PACKAGE_NAME ($PACKAGE_VERSION) unstable; urgency=low
 
   * New build.

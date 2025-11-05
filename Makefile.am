@@ -5,10 +5,10 @@ SUBDIRS = src . tests
 
 if HAVE_SHFMT
 format:
-	@GIT@ ls-files '*.sh' | xargs -r @SHFMT@ --write --simplify --list
+	@SHFMT@ --write --simplify --list ${srcdir}/src/*.sh
 
 check-format:
-	@SHFMT@ --diff --simplify --list $$(git ls-files '*.sh')
+	@SHFMT@ --diff --simplify --list ${srcdir}/src/*.sh
 endif
 
 if HAVE_SHFMT
