@@ -1,7 +1,13 @@
+EXTRA_DIST: debian/changelog.in
+
 all-local: @CURL_PACKAGE_STRING@/debian/changelog
 
 @CURL_PACKAGE_STRING@/debian/changelog: @CURL_PACKAGE_STRING@.debian.stamp
-	touch $@
+	echo "cfbuild-@CURL_PACKAGE_NAME@ (@CURL_PACKAGE_VERSION@) unstable; urgency=low" > $@
+	echo "" >> $@
+	echo "  * New build." >> $@
+	echo "" >> $@
+	echo " -- CFEngine Autobuild System <packager@cfengine.com>  @BUILD_DATE@" >> $@
 
 @CURL_PACKAGE_STRING@.debian.stamp: @CURL_PACKAGE_STRING@.extracted.stamp
 	mkdir -p @CURL_PACKAGE_STRING@/debian
