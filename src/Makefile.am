@@ -1,17 +1,10 @@
-EXTRA_DIST: debian/changelog.in
+EXTRA_DIST: render-changelog.sh
 
 all-local: @CURL_PACKAGE_STRING@/debian/changelog
 
-@CURL_PACKAGE_STRING@/debian/changelog: @CURL_PACKAGE_STRING@.debian.stamp
-	echo "cfbuild-@CURL_PACKAGE_NAME@ (@CURL_PACKAGE_VERSION@) unstable; urgency=low" > $@
-	echo "" >> $@
-	echo "  * New build." >> $@
-	echo "" >> $@
-	echo " -- CFEngine Autobuild System <packager@cfengine.com>  @BUILD_DATE@" >> $@
-
-@CURL_PACKAGE_STRING@.debian.stamp: @CURL_PACKAGE_STRING@.extracted.stamp
-	mkdir -p @CURL_PACKAGE_STRING@/debian
-	echo "Created directory '@CURL_PACKAGE_STRING@/debian' (needed by deb packaging tool)..." > $@
+@CURL_PACKAGE_STRING@/debian/changelog: @CURL_PACKAGE_STRING@.extracted.stamp
+	chmod +x ${srcdir}/render-changelog.sh
+	${srcdir}/render-changelog.sh "@CURL_PACKAGE_NAME@" "@CURL_PACKAGE_VERSION@" "@BUILD_DATE@"
 
 @CURL_PACKAGE_STRING@.extracted.stamp: @CURL_PACKAGE_TARNAME@
 	@TAR@ -xf $<
