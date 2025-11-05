@@ -3,8 +3,8 @@
 # config.sh.  Generated from config.sh.in by configure.
 #
 
-export SOURCE_DIR=@top_srcdir@
-export BUILD_DIR=@top_builddir@
+export SOURCE_DIR="@top_srcdir@"
+export BUILD_DIR="@top_builddir@"
 
 # System type variables
 export OS_NAME="@OS_NAME@"

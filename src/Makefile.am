@@ -1,21 +1,14 @@
-CURL_VERSION = 8.16.0
+all-local: @CURL_PACKAGE_STRING@/
 
-.ONESHELL:
-.SHELLFLAGS = -ec . ${builddir}/config.sh
+@CURL_PACKAGE_STRING@/: verify-curl.stamp
+	@TAR@ -xf @CURL_PACKAGE_TARNAME@
 
-all-local: curl-"$CURL_VERSION"/
+verify-curl.stamp: @CURL_PACKAGE_TARNAME@
+	echo "@CURL_PACKAGE_SHASUM@  @CURL_PACKAGE_TARNAME@" | @SHA256SUM@ --check && touch $@
 
-curl-"${CURL_VERSION}"/: verify-curl.stamp
-	log_debug "Verifying integrity of '$@'..."
-	@TAR@ -xf curl-"${CURL_VERSION}".tar.gz
-
-verify-curl.stamp: curl-"${CURL_VERSION}".tar.gz
-	@SHA256SUM@ --check --ignore-missing "$srcdir"/checksums.txt
-	touch "$@"
-
-curl-"${CURL_VERSION}".tar.gz:
-	@WGET@ "https://curl.haxx.se/download/$@"
+@CURL_PACKAGE_TARNAME@:
+	@WGET@ @CURL_PACKAGE_SOURCE@
 
 clean-local:
-	rm -f curl-"${CURL_VERSION}".tar.gz
-	rm -rf curl-"${CURL_VERSION}"
+	rm -f @CURL_PACKAGE_TARNAME@
+	rm -rf @CURL_PACKAGE_STRING@
