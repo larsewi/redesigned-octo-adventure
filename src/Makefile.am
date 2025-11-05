@@ -1,8 +1,15 @@
-all-local: @CURL_PACKAGE_STRING@.stamp
+all-local: @CURL_PACKAGE_STRING@/debian/changelog
 
-@CURL_PACKAGE_STRING@.stamp: @CURL_PACKAGE_TARNAME@
+@CURL_PACKAGE_STRING@/debian/changelog: @CURL_PACKAGE_STRING@.debian.stamp
+	touch $@
+
+@CURL_PACKAGE_STRING@.debian.stamp: @CURL_PACKAGE_STRING@.extracted.stamp
+	mkdir -p @CURL_PACKAGE_STRING@/debian
+	echo "Created directory '@CURL_PACKAGE_STRING@/debian' (needed by deb packaging tool)..." > $@
+
+@CURL_PACKAGE_STRING@.extracted.stamp: @CURL_PACKAGE_TARNAME@
 	@TAR@ -xf $<
-	echo "Extracted $< to @CURL_PACKAGE_STRING@..." > $@
+	echo "Extracted tarball '$<' to '@CURL_PACKAGE_STRING@'..." > $@
 
 @CURL_PACKAGE_TARNAME@:
 	@WGET@ @CURL_PACKAGE_SOURCE@

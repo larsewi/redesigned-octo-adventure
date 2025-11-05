@@ -203,6 +203,8 @@ AC_CONFIG_FILES([Makefile
                  tests/Makefile],
                  [chmod +x config.sh])
 
+# Dependencies
+
 AC_SUBST([CURL_PACKAGE_NAME],    [curl])
 AC_SUBST([CURL_PACKAGE_VERSION], [8.16.0])
 AC_SUBST([CURL_PACKAGE_STRING],  [${CURL_PACKAGE_NAME}-${CURL_PACKAGE_VERSION}])
