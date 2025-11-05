@@ -2,7 +2,7 @@
 #
 # render-changelog.sh: Render package changelog required by deb packaging tool
 # Args:
-#   $1 - Package string (e.g., 'curl')
+#   $1 - Package name (e.g., 'curl')
 #   $2 - Package version (e.g., '8.16.0')
 #   $3 - Build date (e.g., 'Wed, 05 Nov 2025 16:38:12 +010')
 #
