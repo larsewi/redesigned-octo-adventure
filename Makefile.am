@@ -9,9 +9,9 @@ format:
 
 check-format:
 	@SHFMT@ --diff --simplify --list ${srcdir}/src/*.sh
-endif
+endif # HAVE_SHFMT
 
-if HAVE_SHFMT
+if HAVE_GIT
 super-clean:
 	@GIT@ clean -fxd
-endif
+endif # HAVE_GIT
