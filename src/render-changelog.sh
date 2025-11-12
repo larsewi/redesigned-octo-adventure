@@ -1,6 +1,6 @@
 #!/usr/bin/env sh
 #
-# render-changelog.sh: Render package changelog required by deb packaging tool
+# render-changelog.sh: Render package changelog file (required by deb packaging tool)
 # Args:
 #   $1 - Package name (e.g., 'curl')
 #   $2 - Package version (e.g., '8.16.0')
